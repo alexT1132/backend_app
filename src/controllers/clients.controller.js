@@ -72,3 +72,9 @@ export const ObtenerCliente = async (req, res) => {
     return res.status(404).json({ message: "Cliente no encontrado" });
   }
 };
+
+export const BorrarCliente = async (req, res) => {
+  const client = await Client.findByIdAndDelete(req.params.id);
+  if (!client) return res.status(404).json({ message: "Client not found" });
+  return res.sendStatus(204);
+};
