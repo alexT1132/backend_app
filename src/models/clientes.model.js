@@ -38,6 +38,10 @@ const clientSchema = new mongoose.Schema(
       total: {
         type: String,
       },
+      fecha: {
+        type: Date,
+        default: Date.now()
+      }
   }, { timestamps: true }
 );
 
