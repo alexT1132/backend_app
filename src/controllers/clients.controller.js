@@ -10,7 +10,7 @@ export const getClients = async (req, res) => {
    }
 };
 
-  export const crear = async (req, res) => {
+export const crear = async (req, res) => {
     const { 
         nombre,
         direccion,
@@ -125,3 +125,226 @@ export const ObtenerVentasMes = async (req, res) => {
     res.status(500).json({ error: "Error al obtener las ventas del mes" });
   }
 };
+
+export const ObtenerIngresos = async (req, res) => {
+  try {
+
+    const clientesEnero = await Client.find({
+      $expr: { $eq: [{ $month: "$fecha" }, 1] },
+    }).sort({ fecha: 1 }); 
+
+    const totalEnero = clientesEnero.reduce(
+      (sum, cliente) => sum + parseFloat(cliente.total || 0),
+      0
+    );
+
+    const clientesFebrero = await Client.find({
+      $expr: { $eq: [{ $month: "$fecha" }, 2] },
+    }).sort({ fecha: 1 }); 
+
+    const totalFebrero = clientesFebrero.reduce(
+      (sum, cliente) => sum + parseFloat(cliente.total || 0),
+      0
+    );
+
+    const clientesMarzo = await Client.find({
+      $expr: { $eq: [{ $month: "$fecha" }, 3] },
+    }).sort({ fecha: 1 }); 
+
+    const totalMarzo = clientesMarzo.reduce(
+      (sum, cliente) => sum + parseFloat(cliente.total || 0),
+      0
+    );
+
+    const clientesAbril = await Client.find({
+      $expr: { $eq: [{ $month: "$fecha" }, 4] },
+    }).sort({ fecha: 1 }); 
+
+    const totalAbril = clientesAbril.reduce(
+      (sum, cliente) => sum + parseFloat(cliente.total || 0),
+      0
+    );
+
+    const clientesMayo = await Client.find({
+      $expr: { $eq: [{ $month: "$fecha" }, 5] },
+    }).sort({ fecha: 1 }); 
+
+    const totalMayo = clientesMayo.reduce(
+      (sum, cliente) => sum + parseFloat(cliente.total || 0),
+      0
+    );
+
+    const clientesJunio = await Client.find({
+      $expr: { $eq: [{ $month: "$fecha" }, 6] },
+    }).sort({ fecha: 1 }); 
+
+    const totalJunio = clientesJunio.reduce(
+      (sum, cliente) => sum + parseFloat(cliente.total || 0),
+      0
+    );
+    
+    const clientesJulio = await Client.find({
+      $expr: { $eq: [{ $month: "$fecha" }, 7] },
+    }).sort({ fecha: 1 }); 
+
+    const totalJulio = clientesJulio.reduce(
+      (sum, cliente) => sum + parseFloat(cliente.total || 0),
+      0
+    );
+
+    const clientesAgosto = await Client.find({
+      $expr: { $eq: [{ $month: "$fecha" }, 8] },
+    }).sort({ fecha: 1 }); 
+
+    const totalAgosto = clientesAgosto.reduce(
+      (sum, cliente) => sum + parseFloat(cliente.total || 0),
+      0
+    );
+
+    const clientesSeptiembre = await Client.find({
+      $expr: { $eq: [{ $month: "$fecha" }, 9] },
+    }).sort({ fecha: 1 }); 
+
+    const totalSeptiembre = clientesSeptiembre.reduce(
+      (sum, cliente) => sum + parseFloat(cliente.total || 0),
+      0
+    );
+
+    const clientesOctubre = await Client.find({
+      $expr: { $eq: [{ $month: "$fecha" }, 10] },
+    }).sort({ fecha: 1 }); 
+
+    const totalOctubre = clientesOctubre.reduce(
+      (sum, cliente) => sum + parseFloat(cliente.total || 0),
+      0
+    );
+
+    const clientesNoviembre = await Client.find({
+      $expr: { $eq: [{ $month: "$fecha" }, 11] },
+    }).sort({ fecha: 1 }); 
+
+    const totalNoviembre = clientesNoviembre.reduce(
+      (sum, cliente) => sum + parseFloat(cliente.total || 0),
+      0
+    );
+
+    const clientesDiciembre = await Client.find({
+      $expr: { $eq: [{ $month: "$fecha" }, 12] },
+    }).sort({ fecha: 1 }); 
+
+    const totalDiciembre = clientesDiciembre.reduce(
+      (sum, cliente) => sum + parseFloat(cliente.total || 0),
+      0
+    );
+
+    res.json({
+      totalEnero,
+      totalFebrero,
+      totalMarzo,
+      totalAbril,
+      totalMayo,
+      totalJunio,
+      totalJulio,
+      totalAgosto,
+      totalSeptiembre,
+      totalOctubre,
+      totalNoviembre,
+      totalDiciembre
+    });
+  } catch (error) {
+    res.status(500).json({ error: "Error al obtener los datos de marzo" });
+  }
+}
+
+export const ObtenerAlumnos = async (req, res) => {
+  try {
+    const clientesEnero = await Client.find({
+      $expr: { $eq: [{ $month: "$fecha" }, 1] }, 
+    });
+
+    const Enero = clientesEnero.length;
+
+    const clientesFebrero = await Client.find({
+      $expr: { $eq: [{ $month: "$fecha" }, 2] }, 
+    });
+
+    const Febrero = clientesFebrero.length;
+
+    const clientesMarzo = await Client.find({
+      $expr: { $eq: [{ $month: "$fecha" }, 3] }, 
+    });
+
+    const marzo = clientesMarzo.length;
+
+    const clientesAbril = await Client.find({
+      $expr: { $eq: [{ $month: "$fecha" }, 4] }, 
+    });
+
+    const abril = clientesAbril.length;
+
+    const clientesMayo = await Client.find({
+      $expr: { $eq: [{ $month: "$fecha" }, 5] }, 
+    });
+
+    const Mayo = clientesMayo.length;
+
+    const clientesJunio = await Client.find({
+      $expr: { $eq: [{ $month: "$fecha" }, 6] }, 
+    });
+
+    const Junio = clientesJunio.length;
+
+    const clientesJulio = await Client.find({
+      $expr: { $eq: [{ $month: "$fecha" }, 7] }, 
+    });
+
+    const Julio = clientesJulio.length;
+
+    const clientesAgosto = await Client.find({
+      $expr: { $eq: [{ $month: "$fecha" }, 8] }, 
+    });
+
+    const Agosto = clientesAgosto.length;
+
+    const clientesSeptiembre = await Client.find({
+      $expr: { $eq: [{ $month: "$fecha" }, 9] }, 
+    });
+
+    const Septiembre = clientesSeptiembre.length;
+
+    const clientesOctubre = await Client.find({
+      $expr: { $eq: [{ $month: "$fecha" }, 10] }, 
+    });
+
+    const Octubre = clientesOctubre.length;
+
+    const clientesNoviembre = await Client.find({
+      $expr: { $eq: [{ $month: "$fecha" }, 11] }, 
+    });
+
+    const Noviembre = clientesNoviembre.length;
+
+    const clientesDiciembre = await Client.find({
+      $expr: { $eq: [{ $month: "$fecha" }, 12] }, 
+    });
+
+    const Diciembre = clientesDiciembre.length;
+
+    res.json({
+      Enero,
+      Febrero,
+      marzo,
+      abril,
+      Mayo,
+      Junio,
+      Julio,
+      Agosto,
+      Septiembre,
+      Octubre,
+      Noviembre,
+      Diciembre
+    });
+  } catch (error) {
+    res.status(500).json({ error: "Error al obtener los datos de enero" });
+  }
+}

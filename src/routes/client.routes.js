@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { crear, getClients, ObtenerUltimo, ObtenerCliente, BorrarCliente, ObtenerVentasDelDia, ObtenerVentasSemanales, ObtenerVentasMes } from "../controllers/clients.controller.js";
+import { crear, getClients, ObtenerUltimo, ObtenerCliente, BorrarCliente, ObtenerVentasDelDia, ObtenerVentasSemanales, ObtenerVentasMes, ObtenerIngresos, ObtenerAlumnos } from "../controllers/clients.controller.js";
 
 const router  = Router();
 
@@ -17,6 +17,10 @@ router.get("/clientesDia", ObtenerVentasDelDia);
 
 router.get("/clientesSemana", ObtenerVentasSemanales);
 
-router.get("/clientesMes", ObtenerVentasMes)
+router.get("/clientesMes", ObtenerVentasMes);
+
+router.get("/ingresos", ObtenerIngresos);
+
+router.get("/alumnos", ObtenerAlumnos);
 
 export default router;

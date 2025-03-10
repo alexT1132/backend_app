@@ -40,7 +40,7 @@ const clientSchema = new mongoose.Schema(
       },
       fecha: {
         type: Date,
-        default: Date.now()
+        default: Date.now(),
       }
   }, { timestamps: true }
 );
