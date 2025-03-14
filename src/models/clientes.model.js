@@ -41,7 +41,10 @@ const clientSchema = new mongoose.Schema(
       fecha: {
         type: Date,
         default: Date.now(),
-      }
+      },
+      descripcion: {
+        type: String,
+      },
   }, { timestamps: true }
 );
 

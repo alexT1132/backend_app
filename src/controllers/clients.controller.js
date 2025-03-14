@@ -23,7 +23,8 @@ export const crear = async (req, res) => {
         pendiente,
         fechaPendiente,
         incentivo,
-        total
+        total,
+        descripcion
      } = req.body;
 
      try {
@@ -39,14 +40,14 @@ export const crear = async (req, res) => {
             pendiente,
             fechaPendiente,
             incentivo,
-            total
+            total,
+            descripcion
          });
 
         const savedClient = await newClient.save();
 
         res.json(savedClient);
      } catch (error) {
-         console.log(req.body);
         return res.status(500).json({ message: 'Something went wrong' });
      }
 
@@ -84,7 +85,7 @@ export const ObtenerVentasDelDia = async (req, res) => {
   try {
     const hoy = moment().startOf("day");
     const ventas = await Client.find({
-      fecha: { $gte: hoy.toDate(), $lt: moment(hoy).endOf("day").toDate() },
+      createdAt: { $gte: hoy.toDate(), $lt: moment(hoy).endOf("day").toDate() },
     });
 
     res.json(ventas);
@@ -100,7 +101,7 @@ export const ObtenerVentasSemanales = async (req, res) => {
     const sabado = moment(lunes).add(5, "days").endOf("day"); // Sábado de la misma semana
 
     const ventas = await Client.find({
-      fecha: { $gte: lunes.toDate(), $lte: sabado.toDate() },
+      createdAt: { $gte: lunes.toDate(), $lte: sabado.toDate() },
     });
 
     res.json(ventas);
@@ -116,7 +117,7 @@ export const ObtenerVentasMes = async (req, res) => {
     const finMes = moment().endOf("month"); // Último día del mes a las 23:59:59
 
     const ventas = await Client.find({
-      fecha: { $gte: inicioMes.toDate(), $lte: finMes.toDate() },
+      createdAt: { $gte: inicioMes.toDate(), $lte: finMes.toDate() },
     });
 
     res.json(ventas);
