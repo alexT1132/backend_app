@@ -11,11 +11,11 @@ import ClientsRoutes from "./routes/client.routes.js";
 import CountRoutes from "./routes/counter.routes.js";
 import AgendaRoutes from "./routes/agenda.routes.js";
 import AsesoresRoutes from "./routes/asesores.routes.js";
+import CursosRoutes from "./routes/Cursos.routes.js";
 
 import { eliminarEventosPasados } from "./controllers/agenda.controller.js";
 
 const app = express();
-
 
 app.use(cors());
 app.use(morgan("dev"));
@@ -28,6 +28,7 @@ app.use("/api", ClientsRoutes);
 app.use("/api", CountRoutes);
 app.use("/api", AgendaRoutes);
 app.use("/api", AsesoresRoutes);
+app.use("/api", CursosRoutes);
 
 // Automatizar eliminación cada 24 horas (a la medianoche)
 cron.schedule("0 0 * * *", () => {
@@ -35,7 +36,6 @@ cron.schedule("0 0 * * *", () => {
     eliminarEventosPasados();
   });
   
-  // Ejecutar limpieza al iniciar el servidor
   eliminarEventosPasados();
 
 
